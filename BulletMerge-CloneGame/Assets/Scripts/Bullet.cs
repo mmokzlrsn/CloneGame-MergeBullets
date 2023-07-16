@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private int level;
-    private float speed = 2f;  // Speed of the bullet
+    private float speed = 10f;  // Speed of the bullet
     public float lifetime = 6f;  // Time before the bullet is destroyed
 
     private Rigidbody rb;  // Reference to the Rigidbody component
