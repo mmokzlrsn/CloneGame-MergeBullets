@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,9 @@ public class BulletSlot : MonoBehaviour
     {
         if (BulletUI != null) 
         {
-            BulletUI.sprite = Bullet.GetImageUI();
+            BulletUI.sprite = Bullet.GetImageUI(); 
+            BulletUI.transform.localScale = Vector3.zero;
+            BulletUI.transform.DOScale(Vector3.one, 0.3f);
         }
         else
         {

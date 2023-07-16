@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuyButton : MonoBehaviour
 {
@@ -24,13 +25,13 @@ public class BuyButton : MonoBehaviour
 
 
         var emptyBulletSlot = BulletSpawnManager.instance.ReturnEmptyBulletSlot();
-        
 
+        StartCoroutine(Util.CloseButtonInteraction(GetComponent<Button>(), 1f));
         if (emptyBulletSlot != null)
         {
             MoneyManager.instance.Money -= BulletCost;
             Bullet newBullet = Instantiate(CurrentBullet, emptyBulletSlot.BulletSpawnPoint3D);
-
+            
             newBullet.gameObject.SetActive(false);
             newBullet.SetLevel(CurrentBullet.GetLevel()); // Assign the level of CurrentBullet to the new bullet
             emptyBulletSlot.Bullet = newBullet;
