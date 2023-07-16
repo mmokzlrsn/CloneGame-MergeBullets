@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8316428641691847000}
   m_Layer: 0
   m_Name: AmmoLevel_2
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4113473036382543849}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3660996818975150874
 MonoBehaviour:
@@ -93,12 +93,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.17240822, y: 0.15664536, z: 0.3289437}
+  m_Center: {x: 0.002194088, y: -0.004534185, z: 0.009068325}
 --- !u!1001 &4512400753155373058
 PrefabInstance:
   m_ObjectHideFlags: 0
