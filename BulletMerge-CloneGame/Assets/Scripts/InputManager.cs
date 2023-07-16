@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float jumpAmount = 10;
 
+    public bool CanMove = false;
+
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!CanMove) return;
         gameObject.transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 
 
