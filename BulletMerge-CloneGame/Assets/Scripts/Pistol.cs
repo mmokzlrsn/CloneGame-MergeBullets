@@ -1,9 +1,10 @@
+using System.Linq;
 using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
     [SerializeField] float fireRate = 1f;   // Time delay between each shot
-    [SerializeField] Bullet bulletPrefab; // Prefab of the bullet object
+    [SerializeField] GameObject bulletPrefab; // Prefab of the bullet object
     [SerializeField] Transform bulletSpawnPoint; // Point where the bullet is spawned
     [SerializeField] float bulletLifetime = 2f; // Time in seconds before the bullet is destroyed
     [SerializeField] float bulletSizeModifier = 1f; // Size modifier for the bullet
@@ -42,6 +43,10 @@ public class Pistol : MonoBehaviour
         if(other.CompareTag(Constants.BulletTag))
         {
             Debug.Log(gameObject.name + " " + other.gameObject.name);
+            bulletPrefab = other.gameObject;
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(other.gameObject);
+            PistolManager.instance.pistols.Add(this);
         }
     }
 
