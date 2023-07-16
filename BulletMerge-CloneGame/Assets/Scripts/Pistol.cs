@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
-    [SerializeField] float fireRate = 1f;   // Time delay between each shot
+    public float FireRate = 1f;   // Time delay between each shot
     [SerializeField] GameObject bulletPrefab; // Prefab of the bullet object
     [SerializeField] Transform bulletSpawnPoint; // Point where the bullet is spawned
-    [SerializeField] float bulletLifetime = 2f; // Time in seconds before the bullet is destroyed
-    [SerializeField] float bulletSizeModifier = 1f; // Size modifier for the bullet
+    public float BulletLifetime = 2f; // Time in seconds before the bullet is destroyed
+    public float BulletSizeModifier = 1f; // Size modifier for the bullet
     [SerializeField] float bulletSpeed = 15f;
     public bool CanJoin = false;
     public bool CanShoot = false;
@@ -18,7 +18,7 @@ public class Pistol : MonoBehaviour
     {
         if (Time.time >= nextFireTime && CanShoot)
         {
-            nextFireTime = Time.time + 1f / fireRate;
+            nextFireTime = Time.time + 1f / FireRate;
             Shoot();
         }
     }
@@ -29,10 +29,10 @@ public class Pistol : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab.gameObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
 
         // Set the scale of the bullet using the size modifier
-        bullet.transform.localScale *= bulletSizeModifier;
+        bullet.transform.localScale *= BulletSizeModifier;
 
         // Destroy the bullet after the specified lifetime
-        Destroy(bullet, bulletLifetime);
+        Destroy(bullet, BulletLifetime);
 
         // Add force to the bullet to simulate shooting
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
