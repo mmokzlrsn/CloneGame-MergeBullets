@@ -49,7 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   lifetime: 2
-  imageUI: {fileID: -729606811, guid: e82c1b14b000a8d4f9b28bfbcce42d4e, type: 3}
+  rb: {fileID: -8890300337441702122}
+  imageUI: {fileID: 21300000, guid: e384a9f034569ac4fbf9a61eb89dfbe7, type: 3}
   ammoModel: {fileID: 7302340541185843485}
 --- !u!54 &-8890300337441702122
 Rigidbody:

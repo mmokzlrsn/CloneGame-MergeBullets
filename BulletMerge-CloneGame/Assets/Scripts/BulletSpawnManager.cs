@@ -71,6 +71,7 @@ public class BulletSpawnManager : MonoBehaviour
 
                             bulletSlots[i].Bullet= bullet;
                             bulletSlots[i].Bullet.SetBullet(bullet);
+                            bulletSlots[i].Bullet.gameObject.SetActive(false);
                         }
                     }
                 }
@@ -85,7 +86,10 @@ public class BulletSpawnManager : MonoBehaviour
         for(int i = 0; i < bulletSlots.Length; i++)
         {
             if (bulletSlots[i].Bullet != null)
+            {
+                bulletSlots[i].Bullet.gameObject.SetActive(true);
                 bulletSlots[i].Bullet.Fire();
+            }
         }
     }
 
@@ -127,6 +131,7 @@ public class BulletSpawnManager : MonoBehaviour
                             Bullet bullet = Instantiate(bullets[newBulletLevel - 1], bulletSlots[i].BulletSpawnPoint3D, false);
                             bulletSlots[i].Bullet = bullet;
                             bulletSlots[i].Bullet.SetBullet(bullet);
+                            bulletSlots[i].Bullet.gameObject.SetActive(false);
 
                             PlayerPrefs.DeleteKey("BulletSlot" + j);
                             PlayerPrefs.DeleteKey("BulletLevel" + j);

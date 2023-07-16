@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
+    public static MoneyManager instance;
     [SerializeField] TextMeshProUGUI moneyText;
 
     int money;
+
+    private void Awake()
+    {
+        instance= this;
+    }
 
     private void Start()
     {

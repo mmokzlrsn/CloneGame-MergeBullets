@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
+    public static InputManager instance;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed = 500;
     [SerializeField] private float xOffSet = 4;
@@ -21,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanMove = false;
 
+    private void Awake()
+    {
+        instance= this;
+    }
 
     void Start()
     {

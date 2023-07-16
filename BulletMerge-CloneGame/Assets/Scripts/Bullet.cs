@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class Bullet : MonoBehaviour
     private float speed = 10f;  // Speed of the bullet
     public float lifetime = 6f;  // Time before the bullet is destroyed
 
-    private Rigidbody rb;  // Reference to the Rigidbody component
+    [SerializeField] private Rigidbody rb;  // Reference to the Rigidbody component
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();  // Get the Rigidbody component
+        //rb = GetComponent<Rigidbody>();  // Get the Rigidbody component
     }
     public int GetLevel()
     {
@@ -31,12 +32,12 @@ public class Bullet : MonoBehaviour
     }
 
     public void SetImageUI(Sprite value)
-    {
+    { 
         imageUI = value;
     }
 
     public void ClearImageUI()
-    {
+    { 
         imageUI = null;
     }
 

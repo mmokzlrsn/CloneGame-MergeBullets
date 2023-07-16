@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuyButton : MonoBehaviour
 {
     public Bullet CurrentBullet;
+    public int BulletCost = 100;
 
     private void Start()
     {
@@ -18,13 +19,19 @@ public class BuyButton : MonoBehaviour
         //money check later on
         //bulletspawnmanager check
         //assign current bullet into an empty slot, then assign the UI and other properties
+        
+        if (MoneyManager.instance.Money < BulletCost) return;
+
+
         var emptyBulletSlot = BulletSpawnManager.instance.ReturnEmptyBulletSlot();
+        
 
         if (emptyBulletSlot != null)
         {
-             
+            MoneyManager.instance.Money -= BulletCost;
             Bullet newBullet = Instantiate(CurrentBullet, emptyBulletSlot.BulletSpawnPoint3D);
 
+            newBullet.gameObject.SetActive(false);
             newBullet.SetLevel(CurrentBullet.GetLevel()); // Assign the level of CurrentBullet to the new bullet
             emptyBulletSlot.Bullet = newBullet;
 

@@ -10,7 +10,17 @@ public class GoToFinishLine : MonoBehaviour
 
     public void GoFinishLine()
     {
-        transform.DOMove(finishLine.transform.position, reachTime).SetEase(Ease.OutExpo); //on complete blend to the pistol cam
+        
+
+        transform.DOMove(finishLine.transform.position, reachTime).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            //camera switch
+            CameraManager.instance.ChangeToNextCamera();
+            PistolManager.instance.SetPistolPositions();
+            InputManager.instance.CanMove = true;
+            
+        })
+            ; //on complete blend to the pistol cam
     }
 
 

@@ -19,8 +19,15 @@ public class PistolManager : MonoBehaviour
     {
         for(int i = 0; i < pistols.Count; i++)
         {
-            pistols[i].transform.DOMove(pistolPositions[i].transform.position, timeToArrive).SetEase(Ease.OutBack);
-        } 
+            var temp = pistols[i];
+            temp.transform.DOMove(pistolPositions[i].transform.position, timeToArrive).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                temp.CanShoot = true;
+            });
+            pistols[i].transform.SetParent(InputManager.instance.gameObject.transform, false);
+            //pistols[i].CanShoot = true;
+
+        }
     }
 
     

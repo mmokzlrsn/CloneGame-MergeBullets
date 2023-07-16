@@ -8,6 +8,7 @@ public class Pistol : MonoBehaviour
     [SerializeField] Transform bulletSpawnPoint; // Point where the bullet is spawned
     [SerializeField] float bulletLifetime = 2f; // Time in seconds before the bullet is destroyed
     [SerializeField] float bulletSizeModifier = 1f; // Size modifier for the bullet
+    [SerializeField] float bulletSpeed = 15f;
     public bool CanJoin = false;
     public bool CanShoot = false;
 
@@ -35,7 +36,7 @@ public class Pistol : MonoBehaviour
 
         // Add force to the bullet to simulate shooting
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.AddForce(bulletSpawnPoint.forward * 5f, ForceMode.Impulse);
+        bulletRigidbody.AddForce(bulletSpawnPoint.forward * bulletSpeed, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +46,7 @@ public class Pistol : MonoBehaviour
             Debug.Log(gameObject.name + " " + other.gameObject.name);
             bulletPrefab = other.gameObject;
             Destroy(GetComponent<BoxCollider>());
-            Destroy(other.gameObject);
+            bulletPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
             PistolManager.instance.pistols.Add(this);
         }
     }
